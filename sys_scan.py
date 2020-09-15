@@ -100,15 +100,7 @@ if 'anchore' in REQUESTED_TOOLS:
 
             vulns = result_dict["vulnerabilities"]
 
-########## REMOVE ME #########################
-            stop = 0
             for vuln in vulns:
-
-                if stop >= 200:
-                    break
-                else:
-                    stop = stop + 1
-########## REMOVE ME #########################
 
                 # Get Weakeness details from cwe.mitre.org
                 cve_url = vuln["url"]
