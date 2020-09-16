@@ -113,7 +113,7 @@ if 'anchore' in REQUESTED_TOOLS:
                 curr_detection = Detection(
                                             url,
                                             vuln["severity"], 
-                                            None, 
+                                            'Container', 
                                             vuln["vuln"],
                                             None,
                                             vuln["package"],
@@ -148,7 +148,7 @@ if 'zap' in REQUESTED_TOOLS:
                             curr_detection = Detection(
                                             url,
                                             alert["riskdesc"][0:alert["riskdesc"].index('(')],
-                                            None,
+                                            'Application',
                                             alert["name"],
                                             None,
                                             instance["method"] + ' ' + instance["uri"],
@@ -202,7 +202,7 @@ if 'joomscan' in REQUESTED_TOOLS:
                     curr_detection = Detection(
                                                 cwe_url,
                                                 None,
-                                                None,
+                                                'Application',
                                                 vulnerability_name + ' (' + cve_id + ')',
                                                 None,
                                                 APP_URI,
