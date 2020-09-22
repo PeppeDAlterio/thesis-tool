@@ -3,11 +3,11 @@
 ## Software requirements
 System:
 
-    sudo apt-get install python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel
+    python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel
     
 Python:
 
-    sudo pip3 install libxml2-python3 requests-html wheel requests==2.20.1
+    libxml2-python3 requests-html wheel requests==2.20.1
 
 ## Usage
 ### Test and report
