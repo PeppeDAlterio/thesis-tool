@@ -4,7 +4,7 @@ COPY . /
 
 RUN chmod +x /run.sh
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
     python3 \
     python3-pip \
     python3-setuptools \
@@ -16,9 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-    
-RUN yum --version
-RUN apk --version
     
 RUN pip3 install requests-html
 RUN pip3 install wheel
