@@ -5,14 +5,15 @@ COPY . /
 RUN chmod +x /run.sh
 
 RUN apk add --update --no-cache \
+    build-base \
+    python3-dev \
     python3 \
-    python3-pip \
-    python3-setuptools \
+    py3-pip \
+    py3-setuptools \
     curl \
     gcc \
-    libpq-dev \
-    python3-dev \
-    python3-wheel \
+    libpq \
+    py3-wheel \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
