@@ -13,10 +13,7 @@ RUN apk add --update --no-cache \
     curl \
     gcc \
     libpq \
-    py3-wheel \
-    && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    py3-wheel
     
 RUN pip3 install requests-html
 RUN pip3 install wheel
