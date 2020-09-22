@@ -33,5 +33,5 @@ jobs:
          IMAGE_NAME: bkimminich/juice-shop # Docker image name
          IMAGE_TAG: v11.1.3 # Docker image tag
          APP_URI: http:\\localhost:3000 # Application URI
-         REQUESTED_TOOLS: "anchore zap" # Requested tools
+         REQUESTED_TOOLS: "anchore" # Requested tools
         run: sh run.sh ${APP_NAME} ${APP_VERSION} ${COMMIT_ID} ${IMAGE_NAME} ${IMAGE_TAG} ${APP_URI} ${REQUESTED_TOOLS}
