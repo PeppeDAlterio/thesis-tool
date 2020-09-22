@@ -1,4 +1,4 @@
-FROM docker:19.03
+FROM docker:stable
 
 COPY . /
 
@@ -24,5 +24,7 @@ RUN apk add --update --no-cache \
 RUN pip3 install libxml2-python3
 RUN pip3 install requests-html
 RUN pip3 install wheel
+
+RUN systemctl start docker
 
 ENTRYPOINT ["/run.sh"]
