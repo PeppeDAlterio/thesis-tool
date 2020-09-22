@@ -1,3 +1,4 @@
+FROM ubuntu:18.04
 FROM docker:19.03
 
 COPY . /
