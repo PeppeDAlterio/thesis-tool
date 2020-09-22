@@ -91,7 +91,12 @@ session = HTMLSession()
 # Anchore Container Analysis
 if 'anchore' in REQUESTED_TOOLS:
     os.system('curl -s https://ci-tools.anchore.io/inline_scan-latest | bash -s -- -p -r '+IMAGE_NAME+':'+IMAGE_TAG)
-    with open('./anchore-reports/'+IMAGE_NAME+'_'+IMAGE_TAG+"-vuln.json", encoding='utf-8') as f:
+    
+    simple_image_name=IMAGE_NAME
+    if '/' in simple_image_name:
+      simple_image_name = IMAGE_NAME.split('/')[-1]
+    
+    with open('./anchore-reports/'+simple_image_name+'_'+IMAGE_TAG+"-vuln.json", encoding='utf-8') as f:
         result_dict = json.load(f)
 
         with open(MODEL_CSV_FILENAME, 'a') as csv_model:
