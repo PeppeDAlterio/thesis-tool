@@ -5,6 +5,7 @@ COPY . /
 RUN chmod +x /run.sh
 
 RUN apk add --update --no-cache \
+    bash \
     build-base \
     python3-dev \
     python3 \
