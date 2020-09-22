@@ -18,6 +18,8 @@ RUN apk add --update --no-cache \
     py3-libxml2 \
     libxslt
     
+RUN pip3 install libxml2
+RUN pip3 install libxslt
 RUN pip3 install requests-html
 RUN pip3 install wheel
 
