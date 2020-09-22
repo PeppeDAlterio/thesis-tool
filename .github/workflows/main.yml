@@ -1,6 +1,6 @@
-# Test configuration
+# GitHub Action
 
-name: Test tool action
+name: Semi-automated security testing
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -11,7 +11,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  myJob:
+  testing:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
@@ -19,14 +19,17 @@ jobs:
       # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
       # Ref. https://github.com/actions/checkout
       - uses: actions/checkout@v1
-      - name: Setup environment
+      - name: Set up environment
         run: sudo apt-get install python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel
-      - name: Python dependencies
+      - name: Install dependencies
         run: sudo pip3 install libxml2-python3 requests-html wheel
       - name: Execute
-        run: sh run.sh "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
-#      - name: Build image
-#        run: docker build -t thesis-tool .
-#      - name: Execute container
-#        run: docker run thesis-tool "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
-        
+        env: 
+         COMMIT_ID: ${{ github.sha }}
+         APP_NAME: ${{ github.repository }}
+         APP_VERSION: ${{ github.run_id }} 
+         IMAGE_NAME: bkimminich/juice-shop # Docker image name
+         IMAGE_TAG: v11.1.3 # Docker image tag
+         APP_URI: http:\\localhost:3000 # Application URI
+         REQUESTED_TOOLS: "anchore zap" # Requested tools
+        run: sh run.sh "$APP_NAME" "$APP_VERSION" "$COMMIT_ID" "$IMAGE_NAME" "$IMAGE_TAG" "$APP_URI" "$REQUESTED_TOOLS"
