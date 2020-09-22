@@ -20,7 +20,7 @@ jobs:
       # Ref. https://github.com/actions/checkout
       - uses: actions/checkout@v1
       - name: Set up environment
-        run: sudo apt-get install python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel
+        run: sudo apt-get install python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel && mkdir history && sudo chown -R $USER:$GROUP history
       - name: Install dependencies
         run: sudo pip3 install --upgrade libxml2-python3 requests-html wheel requests==2.20.1
       - name: Execute
@@ -36,15 +36,25 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: report.html
-          path: myReport.html
+          name: report
+          path: report.html
           
       - uses: actions/upload-artifact@v2
         with:
-          name: historyReport.html
+          name: historyReport
           path: historyReport.html
           
       - uses: actions/upload-artifact@v2
         with:
           name: history
           path: history/
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: last-model
+          path: last-model.csv
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: model
+          path: model.csv
