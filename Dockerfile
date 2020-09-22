@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM ubuntu:18.04
 
 COPY . /
 
