@@ -1,6 +1,6 @@
 # Test configuration
 
-name: CI
+name: Test tool action
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -19,8 +19,14 @@ jobs:
       # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
       # Ref. https://github.com/actions/checkout
       - uses: actions/checkout@v1
-      - name: Build image
-        run: docker build -t thesis-tool .
-      - name: Execute container
-        run: docker run thesis-tool "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
+      - name: Setup environment
+        run: sudo apt-get install python3-dev python3 python3-pip python3-setuptools curl gcc libpq-dev python3-dev python3-wheel
+      - name: Python dependencies
+        run: sudo pip3 install libxml2-python3 requests-html wheel
+      - name: Execute
+        run: sh run.sh "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
+#      - name: Build image
+#        run: docker build -t thesis-tool .
+#      - name: Execute container
+#        run: docker run thesis-tool "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
         
