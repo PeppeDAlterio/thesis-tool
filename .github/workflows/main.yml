@@ -33,3 +33,18 @@ jobs:
          APP_URI: http:\\localhost:3000 # Application URI
          REQUESTED_TOOLS: "anchore" # Requested tools
         run: sudo sh run.sh ${APP_NAME} ${APP_VERSION} ${COMMIT_ID} ${IMAGE_NAME} ${IMAGE_TAG} ${APP_URI} ${REQUESTED_TOOLS}
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report.html
+          path: myReport.html
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: historyReport.html
+          path: historyReport.html
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: history
+          path: history/
