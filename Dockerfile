@@ -4,7 +4,7 @@ COPY . /
 
 RUN chmod +x /run.sh
 
-RUN apk add --no-cache \
+RUN apk add --update --no-cache \
     python3 \
     python3-pip \
     python3-setuptools \
