@@ -22,5 +22,5 @@ jobs:
       - name: Build image
         run: docker build -t thesis-tool .
       - name: Execute container
-        run: docker run -ti thesis-tool "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
+        run: docker run thesis-tool "Juice Shop" 11.1.3 initCommitId myjuice 11.1.3 http:\\localhost:3000 anchore zap
         
