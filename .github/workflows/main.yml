@@ -53,8 +53,3 @@ jobs:
         with:
           name: last-model
           path: last-model.csv
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: model
-          path: model.csv
