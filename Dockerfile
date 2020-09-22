@@ -15,11 +15,12 @@ RUN apk add --update --no-cache \
     libpq \
     py3-wheel \
     libxml2 \
+    libxml2-dev \
     py3-libxml2 \
-    libxslt
+    libxslt \
+    libxslt-dev
     
-RUN pip3 install libxml2
-RUN pip3 install libxslt
+RUN pip3 install libxml2-python3
 RUN pip3 install requests-html
 RUN pip3 install wheel
 
