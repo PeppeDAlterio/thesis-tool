@@ -1,4 +1,3 @@
-FROM ubuntu:18.04
 FROM docker:19.03
 
 COPY . /
@@ -17,6 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    
+RUN yum --version
+RUN apk --version
     
 RUN pip3 install requests-html
 RUN pip3 install wheel
